@@ -66,6 +66,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     type(); // Start typing when the document is loaded
 });
+        // Music Toggle Script
+        const musicToggle = document.getElementById('music-toggle');
+        const backgroundMusic = document.getElementById('background-music');
+
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = 'Play Music';
+            } else {
+                backgroundMusic.play();
+                musicToggle.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Auto play music when the page loads
+        window.onload = function() {
+            backgroundMusic.play();
+            isPlaying = true;
+            musicToggle.textContent = 'Pause Music';
+        };
 
 
 
