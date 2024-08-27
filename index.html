@@ -6,8 +6,30 @@
     <title>RichMarket</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .music-toggle {
+            position: fixed;
+            top: 910px;
+            right: 20px;
+            background-color: #f39c12;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="TV GIRL X PUNCHMADE DEV MILLIONARE DOLLAR CRIMINAL MIXX.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button class="music-toggle" id="music-toggle">Toggle Music</button>
+
     <header>
         <nav>
             <div class="logo">RichMarket</div>
@@ -81,7 +103,6 @@
                 <p>Tools and methods for bypassing different apps like Apple Wallet, Chase, Paypal, Bank of America, etc.</p>
                 <p class="price">$10 - $5</p>
             </div>
-
         </div>
         <p class="price-disclaimer">(Please note that some of these prices are going to change and may vary based on specific requirements or availability.)</p>
         <p class="price-disclaimer2">We have more products and methods available that are not listed here. Join our Telegram group to see all of our products and methods.</p>
@@ -114,7 +135,31 @@
         <div class="disclaimer" id="disclaimer"></div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Music Toggle Script
+        const musicToggle = document.getElementById('music-toggle');
+        const backgroundMusic = document.getElementById('background-music');
+
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = 'Play Music';
+            } else {
+                backgroundMusic.play();
+                musicToggle.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Auto play music when the page loads
+        window.onload = function() {
+            backgroundMusic.play();
+            isPlaying = true;
+            musicToggle.textContent = 'Pause Music';
+        };
+    </script>
 
 </body>
 </html>
